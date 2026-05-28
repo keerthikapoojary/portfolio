@@ -1,85 +1,658 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Portfolio</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f4f4f4;
-    }
-    header {
-      background: #333;
-      color: #fff;
-      padding: 20px;
-      text-align: center;
-    }
-    nav ul {
-      list-style: none;
-      padding: 0;
-    }
-    nav ul li {
-      display: inline;
-      margin: 0 15px;
-    }
-    nav ul li a {
-      color: #fff;
-      text-decoration: none;
-    }
-    section {
-      padding: 40px;
-      background: #fff;
-      margin: 20px;
-      border-radius: 8px;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #333;
-      color: #fff;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keerthika B S | Aspiring Data Analyst</title>
+    <style>
+        /* --- General Styles --- */
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --background-color: #ffffff;
+            --text-color: #333333;
+            --light-gray: #f4f4f4;
+            --dark-gray: #555555;
+            --font-main: 'Inter', sans-serif;
+            --font-mono: 'Roboto Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--text-color);
+            background-color: var(--background-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        h1, h2, h3 {
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        section {
+            padding: 6rem 0;
+        }
+
+        /* --- Navbar --- */
+        .navbar {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            background-color: var(--background-color);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        .nav-links ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px 0;
+            background-color: var(--secondary-color);
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* --- Hero Section --- */
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            padding-top: 70px; /* Navbar height */
+        }
+
+        .hero-name {
+            font-size: 4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-title {
+            font-size: 1.5rem;
+            font-family: var(--font-mono);
+            margin-bottom: 1rem;
+            color: var(--dark-gray);
+        }
+
+        .hero-tagline {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: #fff;
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--primary-color);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--secondary-color);
+            border: 2px solid var(--secondary-color);
+            margin-left: 1rem;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--secondary-color);
+            color: #fff;
+        }
+
+        .hero-socials {
+            margin-top: 2rem;
+        }
+
+        .hero-socials a {
+            margin: 0 0.5rem;
+        }
+
+        .hero-socials img {
+            width: 24px;
+            height: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icon {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+            transition: transform 0.3s ease;
+            color: var(--secondary-color);
+        }
+
+        .hero-socials img:hover {
+            transform: scale(1.2);
+        }
+
+        .social-icon:hover {
+            transform: scale(1.2);
+        }
+
+        /* --- About Section --- */
+        .about-section {
+            background-color: var(--light-gray);
+        }
+
+        .about-section p {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        /* --- Skills Section --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .skill-tags span {
+            display: inline-block;
+            background-color: var(--light-gray);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            margin: 0.3rem;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+        }
+
+        /* --- Projects Section --- */
+        .projects-section {
+            background-color: var(--light-gray);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .project-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-problem, .project-solution {
+            margin-bottom: 1rem;
+        }
+
+        .project-stack {
+            margin-bottom: 1.5rem;
+        }
+
+        .project-stack span {
+            display: inline-block;
+            background-color: var(--light-gray);
+            padding: 0.3rem 0.8rem;
+            border-radius: 5px;
+            margin: 0.2rem;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+        }
+
+        .project-links .btn {
+            margin-right: 0.5rem;
+            padding: 0.5rem 1rem;
+        }
+
+        /* --- Experience Section --- */
+        .experience-item {
+            margin-bottom: 2rem;
+            padding-left: 1.5rem;
+            border-left: 3px solid var(--primary-color);
+        }
+
+        .experience-item h3 {
+            font-size: 1.5rem;
+        }
+
+        .experience-date {
+            font-family: var(--font-mono);
+            color: var(--dark-gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-item ul {
+            list-style-position: inside;
+        }
+
+        /* --- Contact Section --- */
+        .contact-section {
+            text-align: center;
+        }
+
+        .contact-section p {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .contact-socials {
+            margin-top: 2rem;
+        }
+
+        .contact-socials a {
+            margin: 0 0.5rem;
+        }
+
+        .contact-socials img {
+            width: 32px;
+            height: 32px;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-socials .social-icon {
+            width: 32px;
+            height: 32px;
+        }
+
+        .contact-socials img:hover {
+            transform: scale(1.2);
+        }
+
+        /* --- Footer --- */
+        .footer {
+            background-color: var(--secondary-color);
+            color: #fff;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: var(--background-color);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: left 0.3s ease-in-out;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-links li {
+                margin: 1.5rem 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+
+            .hero-name {
+                font-size: 3rem;
+            }
+
+            .hero-title {
+                font-size: 1.2rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    ```html
+<!-- Replace ONLY this part in your existing code -->
 
-  <header>
-    <h1>My Portfolio</h1>
-    <nav>
-      <ul>
-        <li><a href="#about">About Me</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+<header class="navbar">
+    <div class="container">
+        <a href="#" class="logo">Keerthika B S</a>
+        <nav class="nav-links">
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Certificates</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</header>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>Hello! I'm [Your Name], a web developer passionate about creating beautiful and functional websites.</p>
-  </section>
+<main>
+    <section id="hero" class="hero-section">
+        <div class="container">
+            <h1 class="hero-name">Keerthika B S</h1>
+            <p class="hero-title">Aspiring Data Analyst</p>
 
-  <section id="projects">
-    <h2>Projects</h2>
-    <ul>
-      <li><strong>Project 1:</strong> Description of your project.</li>
-      <li><strong>Project 2:</strong> Description of your project.</li>
-      <li><strong>Project 3:</strong> Description of your project.</li>
-    </ul>
-  </section>
+            <p class="hero-tagline">
+                Passionate about transforming raw data into meaningful insights and building data-driven solutions.
+            </p>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: yourname@example.com</p>
-    <p>LinkedIn: <a href="#">Your LinkedIn</a></p>
-    <p>GitHub: <a href="#">Your GitHub</a></p>
-  </section>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">View Projects</a>
+            </div>
 
-  <footer>
-    <p>&copy; 2025 My Portfolio</p>
-  </footer>
+            <div class="hero-socials">
+                <a href="https://github.com/keerthikapoojary" target="_blank">
+                    <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.53 2.87 8.37 6.84 9.73.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.46-1.19-1.12-1.5-1.12-1.5-.91-.64.07-.63.07-.63 1.01.07 1.54 1.06 1.54 1.06.9 1.58 2.36 1.12 2.94.86.09-.67.35-1.12.64-1.38-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.73 0 0 .84-.27 2.75 1.05.8-.23 1.65-.35 2.5-.36.85.01 1.7.13 2.5.36 1.91-1.32 2.75-1.05 2.75-1.05.55 1.42.2 2.47.1 2.73.64.72 1.03 1.63 1.03 2.75 0 3.94-2.35 4.8-4.58 5.05.36.32.68.95.68 1.92 0 1.39-.01 2.51-.01 2.85 0 .26.18.57.69.47A10.26 10.26 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/>
+                    </svg>
+                </a>
 
-</body>
-</html>
+                <a href="https://www.linkedin.com/in/keerthika-poojary-710bb9300/" target="_blank">
+                    <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M4.98 3.5C4.98 4.88 3.9 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.22 8.98h4.57V24H.22V8.98zM8.17 8.98h4.38v2.05h.06c.61-1.16 2.11-2.39 4.34-2.39 4.64 0 5.5 3.05 5.5 7.01V24h-4.56v-6.67c0-1.59-.03-3.64-2.22-3.64-2.23 0-2.57 1.74-2.57 3.52V24H8.17V8.98z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2>About Me</h2>
+
+            <p>
+                Aspiring Data Analyst with a strong interest in transforming raw data into meaningful insights.
+                Skilled in Python, SQL, Excel, and data visualization tools, with a passion for analyzing trends,
+                solving problems, and supporting data-driven decision making. Enthusiastic learner with a growing
+                foundation in statistics, dashboards, and business analytics, seeking opportunities to apply
+                analytical skills in real-world projects and continuously improve in the field of data analytics.
+            </p>
+        </div>
+    </section>
+
+    <section id="skills" class="skills-section">
+        <div class="container">
+            <h2>Skills</h2>
+
+            <div class="skills-grid">
+
+                <div class="skill-category">
+                    <h3>Languages</h3>
+
+                    <div class="skill-tags">
+                        <span>Python</span>
+                        <span>Java</span>
+                        <span>SQL</span>
+                        <span>HTML5</span>
+                        <span>CSS3</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Tools & Technologies</h3>
+
+                    <div class="skill-tags">
+                        <span>Excel</span>
+                        <span>Power BI</span>
+                        <span>Git & GitHub</span>
+                        <span>VS Code</span>
+                        <span>MySQL</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Concepts</h3>
+
+                    <div class="skill-tags">
+                        <span>Data Cleaning & Preprocessing</span>
+                        <span>Data Visualization</span>
+                        <span>Exploratory Data Analysis</span>
+                        <span>Statistical Analysis</span>
+                        <span>SQL & Database Management</span>
+                        <span>Business Intelligence</span>
+                        <span>Machine Learning Basics</span>
+                        <span>Dashboard Development</span>
+                        <span>Data-Driven Decision Making</span>
+                        <span>Python for Data Analysis</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <h2>Projects</h2>
+
+            <div class="projects-grid">
+
+                <div class="project-card">
+
+                    <h3>Ayudhan - Blood Donation App</h3>
+
+                    <p class="project-problem">
+                        Problem: Difficulty in finding blood donors quickly during emergencies and lack of a centralized platform to connect donors and recipients.
+                    </p>
+
+                    <p class="project-solution">
+                        Solution: Developed a Java-based Blood Donation App that allows users to register, log in,
+                        search for donors based on matching blood groups, and directly contact suitable donors during emergencies.
+                    </p>
+
+                    <div class="project-stack">
+                        <span>Java</span>
+                        <span>MySQL</span>
+                        <span>JDBC</span>
+                        <span>Swing</span>
+                    </div>
+
+                    <div class="project-links">
+                        <a href="YOUR_GITHUB_LINK" class="btn btn-secondary" target="_blank">GitHub</a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="experience-section">
+        <div class="container">
+
+            <h2>Certificates & Workshops</h2>
+
+            <div class="experience-item">
+
+                <h3>Data Analytics Job Simulation | Forage</h3>
+
+                <p class="experience-date">2026</p>
+
+                <ul>
+                    <li>
+                        Completed a virtual job simulation focused on real-world data analytics tasks and business problem-solving.
+                    </li>
+
+                    <li>
+                        Worked on data cleaning, visualization, and interpreting insights from datasets.
+                    </li>
+
+                    <li>
+                        Gained practical exposure to analytical thinking and data-driven decision making.
+                    </li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+
+                <h3>Be 10X AI Tools Workshop</h3>
+
+                <p class="experience-date">2026</p>
+
+                <ul>
+                    <li>
+                        Participated in an AI tools workshop focused on productivity and modern AI applications.
+                    </li>
+
+                    <li>
+                        Explored AI-powered tools for automation, content generation, and workflow optimization.
+                    </li>
+
+                    <li>
+                        Learned practical applications of AI tools for students and professionals.
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+
+            <h2>Get In Touch</h2>
+
+            <p>
+                I'm open to opportunities, collaborations, and learning experiences in Data Analytics and Technology.
+                Feel free to connect with me.
+            </p>
+
+            <a href="mailto:keerthikapoojary28@gmail.com" class="btn btn-primary">Say Hello</a>
+
+            <div class="contact-socials">
+
+                <a href="https://github.com/keerthikapoojary" target="_blank">
+                    <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.53 2.87 8.37 6.84 9.73.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.46-1.19-1.12-1.5-1.12-1.5-.91-.64.07-.63.07-.63 1.01.07 1.54 1.06 1.54 1.06.9 1.58 2.36 1.12 2.94.86.09-.67.35-1.12.64-1.38-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.73 0 0 .84-.27 2.75 1.05.8-.23 1.65-.35 2.5-.36.85.01 1.7.13 2.5.36 1.91-1.32 2.75-1.05 2.75-1.05.55 1.42.2 2.47.1 2.73.64.72 1.03 1.63 1.03 2.75 0 3.94-2.35 4.8-4.58 5.05.36.32.68.95.68 1.92 0 1.39-.01 2.51-.01 2.85 0 .26.18.57.69.47A10.26 10.26 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/>
+                    </svg>
+                </a>
+
+                <a href="https://www.linkedin.com/in/keerthika-poojary-710bb9300/" target="_blank">
+                    <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M4.98 3.5C4.98 4.88 3.9 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.22 8.98h4.57V24H.22V8.98zM8.17 8.98h4.38v2.05h.06c.61-1.16 2.11-2.39 4.34-2.39 4.64 0 5.5 3.05 5.5 7.01V24h-4.56v-6.67c0-1.59-.03-3.64-2.22-3.64-2.23 0-2.57 1.74-2.57 3.52V24H8.17V8.98z"/>
+                    </svg>
+                </a>
+
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <p>&copy; 2026 Keerthika B S. All Rights Reserved.</p>
+    </div>
+</footer>
+```
